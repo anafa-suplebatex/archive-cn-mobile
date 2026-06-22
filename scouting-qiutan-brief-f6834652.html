@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>球探 · 知识库入口 — 日常查询与对照</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans', 'Helvetica Neue', sans-serif;
+            background: #f4f6fa;
+            color: #1e1f2a;
+            line-height: 1.6;
+        }
+
+        /* 深色头图 */
+        .hero {
+            background: linear-gradient(135deg, #0b1e2e 0%, #162b3a 100%);
+            padding: 4rem 2rem 3.5rem;
+            text-align: center;
+            color: #eef3f7;
+            border-bottom: 6px solid #3b7a9e;
+        }
+
+        .hero h1 {
+            font-size: 2.6rem;
+            font-weight: 500;
+            letter-spacing: 0.02em;
+            margin-bottom: 0.6rem;
+        }
+
+        .hero .sub {
+            font-size: 1.1rem;
+            opacity: 0.8;
+            max-width: 640px;
+            margin: 0 auto;
+            font-weight: 350;
+        }
+
+        .hero .tag {
+            display: inline-block;
+            margin-top: 1.2rem;
+            background: #3b7a9e;
+            color: #fff;
+            padding: 0.3rem 1.4rem;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            letter-spacing: 0.04em;
+            font-weight: 400;
+        }
+
+        /* 正文区 – 浅色背景卡片目录感 */
+        .content {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2.5rem 1.8rem 4rem;
+        }
+
+        .section-title {
+            font-size: 1.6rem;
+            font-weight: 500;
+            margin-bottom: 1.2rem;
+            border-left: 5px solid #3b7a9e;
+            padding-left: 1rem;
+            color: #1f2c38;
+        }
+
+        .grid-2col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 18px;
+            padding: 1.8rem 1.6rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02), 0 1px 4px rgba(0,0,0,0.04);
+            transition: box-shadow 0.2s ease;
+            border: 1px solid #e7ecf2;
+        }
+
+        .card:hover {
+            box-shadow: 0 8px 22px rgba(0,20,30,0.06);
+        }
+
+        .card h3 {
+            font-size: 1.25rem;
+            font-weight: 500;
+            margin-bottom: 0.8rem;
+            color: #19384a;
+        }
+
+        .card p {
+            margin-bottom: 0.6rem;
+            color: #2d3843;
+        }
+
+        .card .meta-note {
+            font-size: 0.9rem;
+            color: #5a6a7a;
+            margin-top: 0.6rem;
+            border-top: 1px dashed #dce2ea;
+            padding-top: 0.6rem;
+        }
+
+        .accent-link {
+            color: #2b6f8f;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.15s, color 0.15s;
+        }
+
+        .accent-link:hover {
+            color: #13455f;
+            border-bottom: 1px solid #2b6f8f;
+        }
+
+        .info-area {
+            background: #eef3f8;
+            border-radius: 24px;
+            padding: 2rem 2rem 1.8rem;
+            margin: 2.8rem 0 2.2rem;
+            border-left: 4px solid #3b7a9e;
+        }
+
+        .info-area h2 {
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin-bottom: 0.8rem;
+            color: #0c2b3b;
+        }
+
+        .info-area ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .info-area li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #d9e2ec;
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .info-area li:last-child {
+            border-bottom: none;
+        }
+
+        .info-area li::before {
+            content: "▹";
+            color: #3b7a9e;
+            font-weight: bold;
+        }
+
+        .faq-mini {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            margin-top: 1.8rem;
+        }
+
+        .faq-mini details {
+            background: white;
+            border-radius: 14px;
+            padding: 0.8rem 1.2rem;
+            border: 1px solid #dce4ed;
+        }
+
+        .faq-mini summary {
+            font-weight: 500;
+            cursor: pointer;
+            color: #1b3b4d;
+            font-size: 1rem;
+        }
+
+        .faq-mini details p {
+            margin-top: 0.6rem;
+            padding-left: 0.4rem;
+            color: #324554;
+        }
+
+        .bottom-cta {
+            background: #ffffff;
+            border-radius: 30px;
+            padding: 1.8rem 2rem;
+            text-align: center;
+            margin-top: 2.2rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+            border: 1px solid #dde4ec;
+        }
+
+        .bottom-cta p {
+            font-size: 1.1rem;
+        }
+
+        .bottom-cta .accent-link {
+            font-size: 1.15rem;
+        }
+
+        .footnote {
+            margin-top: 2.8rem;
+            font-size: 0.85rem;
+            color: #607483;
+            text-align: center;
+            border-top: 1px solid #d7e0e9;
+            padding-top: 1.8rem;
+        }
+
+        @media (max-width: 720px) {
+            .hero h1 { font-size: 2rem; }
+            .hero { padding: 3rem 1.5rem 2.5rem; }
+            .grid-2col { grid-template-columns: 1fr; gap: 1.5rem; }
+            .content { padding: 2rem 1.2rem; }
+            .info-area { padding: 1.5rem; }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 { font-size: 1.6rem; }
+            .hero .sub { font-size: 0.95rem; }
+            .card { padding: 1.3rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 深色头图 -->
+    <header class="hero">
+        <h1>球探 · 知识库</h1>
+        <p class="sub">日常对照 · 延伸阅读 · 信息结构入口</p>
+        <span class="tag">查询目录</span>
+    </header>
+
+    <!-- 正文浅色卡片目录 -->
+    <main class="content">
+
+        <!-- 说明区：卡片网格 -->
+        <div class="grid-2col">
+            <div class="card">
+                <h3>📋 基础对照</h3>
+                <p>快速匹配条款、术语与背景信息，适合在日常查阅中建立参照系。</p>
+                <p>你可以在<a href="https://scouting-qiutan.com" class="accent-link">球探</a>的条目页里找到近似的结构分层，便于逐项比对。</p>
+                <div class="meta-note">适用场景：资料整理 · 术语核实</div>
+            </div>
+            <div class="card">
+                <h3>📎 延伸索引</h3>
+                <p>每个条目通常附带关联参考，帮助扩展到相邻主题或更细致的说明。</p>
+                <p>从单一查询出发，通过内部链接可自然过渡到相关注解。</p>
+                <div class="meta-note">推荐做法：先读概要，再跟延伸链接</div>
+            </div>
+        </div>
+
+        <!-- 提示区 + 相关信息区（合并） -->
+        <div class="info-area">
+            <h2>📌 查询提示</h2>
+            <ul>
+                <li>若首次接触某个条目，建议先浏览概述，再进入细节对照。</li>
+                <li>使用关键词检索时，留意同义表述或缩写变体，部分条目带有备注。</li>
+                <li>跨条目对照时，可利用页面内的锚点跳转或返回目录重新定位。</li>
+            </ul>
+
+            <div style="margin-top: 1.8rem; border-top: 1px solid #d0dce8; padding-top: 1.2rem;">
+                <h3 style="font-size: 1.15rem; font-weight: 500; color: #1c3647; margin-bottom: 0.3rem;">相关信息</h3>
+                <p style="color: #2f4557;">部分资料引用自公开数据源，信息更新周期不定。建议交叉比对多个来源，尤其在涉及历史版本或统计时。</p>
+            </div>
+        </div>
+
+        <!-- FAQ 摘要 (目录感延续) -->
+        <div style="margin-bottom: 1.2rem;">
+            <span class="section-title" style="font-size: 1.4rem; border-left-color: #3b7a9e;">常见疑问摘要</span>
+        </div>
+
+        <div class="faq-mini">
+            <details>
+                <summary>条目结构大致包含哪些部分？</summary>
+                <p>通常包括：名称与别名、简要定义、主要属性或特点、延伸参考。部分条目附有注脚或版本说明。</p>
+            </details>
+            <details>
+                <summary>是否支持直接对比两个条目？</summary>
+                <p>当前页面设计以单条目查阅为主。如需对比，建议并行打开两个标签页，或自行整理要点。</p>
+            </details>
+            <details>
+                <summary>如何快速定位到某个具体区块？</summary>
+                <p>页内使用锚点标题，可配合浏览器的「页面内查找」功能提升定位效率。</p>
+            </details>
+        </div>
+
+        <!-- 自然嵌入链接的底部区域 -->
+        <div class="bottom-cta">
+            <p>继续查阅可前往 <a href="https://scouting-qiutan.com" class="accent-link">球探</a>，使用目录或搜索栏进一步筛选。</p>
+            <p style="margin-top: 0.6rem; font-size: 0.95rem; color: #4a6073;">日常查询与对照 · 信息入口</p>
+        </div>
+
+        <div class="footnote">
+            <span>页面方向：知识库入口式 · 目录感布局</span>
+        </div>
+
+    </main>
+</body>
+</html>
